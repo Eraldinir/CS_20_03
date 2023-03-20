@@ -1,0 +1,15 @@
+C:\Git_test_folder\CSHARP\CS_20_03\bin\Debug\net6.0\CS_20_03.exe
+C:\Git_test_folder\CSHARP\CS_20_03\bin\Debug\net6.0\CS_20_03.deps.json
+C:\Git_test_folder\CSHARP\CS_20_03\bin\Debug\net6.0\CS_20_03.runtimeconfig.json
+C:\Git_test_folder\CSHARP\CS_20_03\bin\Debug\net6.0\CS_20_03.dll
+C:\Git_test_folder\CSHARP\CS_20_03\bin\Debug\net6.0\CS_20_03.pdb
+C:\Git_test_folder\CSHARP\CS_20_03\obj\Debug\net6.0\CS_20_03.csproj.AssemblyReference.cache
+C:\Git_test_folder\CSHARP\CS_20_03\obj\Debug\net6.0\CS_20_03.GeneratedMSBuildEditorConfig.editorconfig
+C:\Git_test_folder\CSHARP\CS_20_03\obj\Debug\net6.0\CS_20_03.AssemblyInfoInputs.cache
+C:\Git_test_folder\CSHARP\CS_20_03\obj\Debug\net6.0\CS_20_03.AssemblyInfo.cs
+C:\Git_test_folder\CSHARP\CS_20_03\obj\Debug\net6.0\CS_20_03.csproj.CoreCompileInputs.cache
+C:\Git_test_folder\CSHARP\CS_20_03\obj\Debug\net6.0\CS_20_03.dll
+C:\Git_test_folder\CSHARP\CS_20_03\obj\Debug\net6.0\refint\CS_20_03.dll
+C:\Git_test_folder\CSHARP\CS_20_03\obj\Debug\net6.0\CS_20_03.pdb
+C:\Git_test_folder\CSHARP\CS_20_03\obj\Debug\net6.0\CS_20_03.genruntimeconfig.cache
+C:\Git_test_folder\CSHARP\CS_20_03\obj\Debug\net6.0\ref\CS_20_03.dll
