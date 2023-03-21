@@ -11,27 +11,27 @@ Console.Write("set how many rows we have: ");
 int rows = Convert.ToInt32(Console.ReadLine());
 Console.Write("set how many columns we have: ");
 int cols = Convert.ToInt32(Console.ReadLine());     //  где-то видел сокращение "colunms" до "cols" и мне это понравилось. Кажется вполне лаконичным и интуитивным.
-int[,] matrix = GetMatrix(rows, cols, 0, 100);      //  интернет меня учит плохому ?
-int[,] GetMatrix(int rows, int cols, double min, double max)
+double[,] matrix = GetMatrix(rows, cols, 0, 100);      //  интернет меня учит плохому ?
+double[,] GetMatrix(int rows, int cols, double min, double max)
 {
     double[,] matrix = new double [rows, cols]; 
     for (int i = 0; i < rows; i++)        //  можно было задать размеры более универсальными matrix.GetLength(0) и (1), как на семинаре... 
     {                                                                                                                                                                                                                                                                               //  Но я не уловил почему бы не опираться на вводимые тут же row и column (??)
         for (int j = 0; j < cols; j++) 
         {
-            matrix[i, j] = new Random().NextDouble();
+            matrix[i, j] = new Random().NextDouble() * 100;
         }
     }
     return matrix;
 }
 PrintMatrix(matrix);
-void PrintMatrix(int[,] matrix)
+void PrintMatrix(double[,] matrix)
 {
     for (int i = 0; i < rows; i++) 
     {
         for (int j = 0; j < cols; j++) 
         {
-            Console.Write(matrix[i,j] + "\t");
+            Console.Write($"{matrix[i,j]:F3} \t");
         }
         Console.WriteLine();
         Console.WriteLine();     //   так красиво :)
