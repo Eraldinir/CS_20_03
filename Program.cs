@@ -74,10 +74,46 @@
 //     =======      =======          =======       =======        =======            =======       =======          =====================================
 //  На всякий случай... если я понял неверно условие - вот по другому. Мы задаём одно число и ищем его по матрице, а вот если нет его - то говорим "неть"
 //  попробую:
-int rows = 10;                                   
-int cols = 10; 
-int i = 0;                              //  тут я вынес введение i и j в начало, чтобы можно было к ним обратиться за пределами первого цикла.
-int j = 0;                                  
+// int rows = 10;                                   
+// int cols = 10; 
+// int i = 0;                              //  тут я вынес введение i и j в начало, чтобы можно было к ним обратиться за пределами первого цикла.
+// int j = 0;                                  
+// int[,] matrix = new int[rows, cols]; 
+
+// for (i = 0; i < rows; i++)
+// {
+//     for (j = 0; j < cols; j++)
+//     {
+//         matrix[i, j] = new Random().Next(100);
+//         Console.Write(matrix[i, j] + "\t");
+//     }
+//     Console.WriteLine();
+//     Console.WriteLine();
+// }
+// Console.Write("where is this number: ");
+// int insertedNumber = Convert.ToInt32(Console.ReadLine());
+// int count = 0;
+// if (insertedNumber != matrix[i, j])
+// {
+//     Console.Write("nope, there is no " + insertedNumber);
+// }
+// else
+// {
+//     Console.Write("well, your " + insertedNumber + " repeats: " + count + "times");       //  Однако увы, этот скрипт у меня так и не заработал, а времени отладить катастрофически нет
+//     count++;
+// }
+// Console.Write(insertedNumber + " is here: " + i + ":" + j);
+// =========================================================================================================================
+// Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
+// Например, задан массив:
+// 1 4 7 2
+// 5 9 2 3
+// 8 4 2 4
+// Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
+int rows = 5;                                  
+int cols = 5;
+int i = 0;
+int j = 0;                       
 int[,] matrix = new int[rows, cols]; 
 
 for (i = 0; i < rows; i++)
@@ -90,23 +126,15 @@ for (i = 0; i < rows; i++)
     Console.WriteLine();
     Console.WriteLine();
 }
-Console.Write("where is this number: ");
-int insertedNumber = Convert.ToInt32(Console.ReadLine());
-int count = 0;
-if (insertedNumber != matrix[i, j])
+double[] averageInCols = new double[matrix.GetLength(1)];
+for (int k = 0; k < matrix.GetLength(1); k++)
 {
-    Console.Write("nope, there is no " + insertedNumber);
+    for (i = 0; i < matrix.GetLength(0); i++)
+    {
+        for (j = 0; j < matrix.GetLength(1); j++)
+        {
+            averageInCols[k] = matrix[i, j] / matrix.GetLength(0);
+        }
+    }
 }
-else
-{
-    Console.Write("well, your " + insertedNumber + " repeats: " + count + "times");       //  Однако увы, этот скрипт у меня так и не заработал, а времени отладить катастрофически нет
-    count++;
-}
-Console.Write(insertedNumber + " is here: " + i + ":" + j);
-// =========================================================================================================================
-// Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
-// Например, задан массив:
-// 1 4 7 2
-// 5 9 2 3
-// 8 4 2 4
-// Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
+Console.WriteLine($"Our averages are: [{String.Join("; ", averageInCols)}]");       //    ТОЖЕ ПОКА НЕ ОТЛАДИЛ (хотя ожидал работоспособности)
