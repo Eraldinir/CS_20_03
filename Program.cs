@@ -110,12 +110,11 @@
 // 5 9 2 3
 // 8 4 2 4
 // Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
-int rows = 4;                                  
-int cols = 8;
+int rows = 10;                                  
+int cols = 10;
 int i = 0;
 int j = 0;                       
 int[,] matrix = new int[rows, cols]; 
-
 for (i = 0; i < rows; i++)
 {
     for (j = 0; j < cols; j++)
@@ -127,17 +126,14 @@ for (i = 0; i < rows; i++)
     Console.WriteLine();
 }
 double[] averageInCols = new double[matrix.GetLength(1)];
-double sumCol = 0;                                              //  пришлось за каким-то чёртом делать sumCol даблом, хотя он состоит по умолчанию только их целых чисел
-int k = 0;    
+double sumCol = 0;                                              //  пришлось за каким-то чёртом делать sumCol даблом, хотя он состоит по умолчанию только их целых чисел  
     for (j = 0; j < matrix.GetLength(1); j++)                   //  но только так на выходе возникли дроби. Я ожидал вообще-то их от деления целой суммы на высоту матрицы
     {
+        sumCol = 0;                                             // вот эта фигулька обнуляет сумму столбцов на каждой итерации j -> j+1, чорт я две ночи думал как это сделать!
         for (i = 0; i < matrix.GetLength(0); i++)
         {
             sumCol = sumCol + matrix[i, j];
-            i++;
         }
-        averageInCols[k] = sumCol / matrix.GetLength(0);
+        averageInCols[j] = sumCol / matrix.GetLength(0);
     }
-    
-
-Console.WriteLine($"Our averages are: [{String.Join<double>("; ", averageInCols)}]");       //    ТОЖЕ ПОКА НЕ ОТЛАДИЛ (хотя ожидал работоспособности)
+Console.WriteLine($"Our averages are: [{String.Join<double>("; ", averageInCols)}]");
