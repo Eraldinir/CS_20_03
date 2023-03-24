@@ -77,9 +77,8 @@
 // int rows = 10;                                   
 // int cols = 10; 
 // int i = 0;                              //  тут я вынес введение i и j в начало, чтобы можно было к ним обратиться за пределами первого цикла.
-// int j = 0;                                  
-// int[,] matrix = new int[rows, cols]; 
-
+// int j = 0;                              //  и меня приятно удивило, что это прокатило :))    
+// int[,] matrix = new int[rows, cols];
 // for (i = 0; i < rows; i++)
 // {
 //     for (j = 0; j < cols; j++)
@@ -93,16 +92,21 @@
 // Console.Write("where is this number: ");
 // int insertedNumber = Convert.ToInt32(Console.ReadLine());
 // int count = 0;
-// if (insertedNumber != matrix[i, j])
+// for (i = 0; i < rows; i++)
 // {
-//     Console.Write("nope, there is no " + insertedNumber);
-// }
-// else
+//     for (j = 0; j < cols; j++)
+//     {
+//         if (insertedNumber == matrix[i, j])
+//         {
+//             Console.WriteLine($"{insertedNumber} is here: {i+1}:{j+1} and repeats {count+1} times");   //  добавил +1 к координатам, чтобы сделать их человеческими :)
+//             count++; 
+//         }
+//     }
+// } 
+// if (count <= 0)                                                        //  а вот эту прикольную штуку пришлось достать аж сюда, а могло бы быть else'ом в цикле счётчика.
 // {
-//     Console.Write("well, your " + insertedNumber + " repeats: " + count + "times");       //  Однако увы, этот скрипт у меня так и не заработал, а времени отладить катастрофически нет
-//     count++;
+//     Console.WriteLine($"nope, there is no '{insertedNumber}'");
 // }
-// Console.Write(insertedNumber + " is here: " + i + ":" + j);
 // =========================================================================================================================
 // Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
 // Например, задан массив:
@@ -110,30 +114,31 @@
 // 5 9 2 3
 // 8 4 2 4
 // Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
-int rows = 10;                                  
-int cols = 10;
-int i = 0;
-int j = 0;                       
-int[,] matrix = new int[rows, cols]; 
-for (i = 0; i < rows; i++)
-{
-    for (j = 0; j < cols; j++)
-    {
-        matrix[i, j] = new Random().Next(100);
-        Console.Write(matrix[i, j] + "\t");
-    }
-    Console.WriteLine();
-    Console.WriteLine();
-}
-double[] averageInCols = new double[matrix.GetLength(1)];
-double sumCol = 0;                                              //  пришлось за каким-то чёртом делать sumCol даблом, хотя он состоит по умолчанию только их целых чисел  
-    for (j = 0; j < matrix.GetLength(1); j++)                   //  но только так на выходе возникли дроби. Я ожидал вообще-то их от деления целой суммы на высоту матрицы
-    {
-        sumCol = 0;                                             // вот эта фигулька обнуляет сумму столбцов на каждой итерации j -> j+1, чорт я две ночи думал как это сделать!
-        for (i = 0; i < matrix.GetLength(0); i++)
-        {
-            sumCol = sumCol + matrix[i, j];
-        }
-        averageInCols[j] = sumCol / matrix.GetLength(0);
-    }
-Console.WriteLine($"Our averages are: [{String.Join<double>("; ", averageInCols)}]");
+
+// int rows = 10;                                  
+// int cols = 10;
+// int i = 0;
+// int j = 0;                       
+// int[,] matrix = new int[rows, cols]; 
+// for (i = 0; i < rows; i++)
+// {
+//     for (j = 0; j < cols; j++)
+//     {
+//         matrix[i, j] = new Random().Next(100);
+//         Console.Write(matrix[i, j] + "\t");
+//     }
+//     Console.WriteLine();
+//     Console.WriteLine();
+// }
+// double[] averageInCols = new double[matrix.GetLength(1)];
+// double sumCol = 0;                                              //  пришлось за каким-то чёртом делать sumCol даблом, хотя он состоит по умолчанию только их целых чисел  
+//     for (j = 0; j < matrix.GetLength(1); j++)                   //  но только так на выходе возникли дроби. Я ожидал вообще-то их от деления целой суммы на высоту матрицы
+//     {
+//         sumCol = 0;                                             // вот эта фигулька обнуляет сумму столбцов на каждой итерации j -> j+1, чорт я две ночи думал как это сделать!
+//         for (i = 0; i < matrix.GetLength(0); i++)
+//         {
+//             sumCol = sumCol + matrix[i, j];
+//         }
+//         averageInCols[j] = sumCol / matrix.GetLength(0);
+//     }
+// Console.WriteLine($"Our averages are: [{String.Join<double>("; ", averageInCols)}]");
