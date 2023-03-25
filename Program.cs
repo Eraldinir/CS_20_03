@@ -45,8 +45,8 @@
 // 8 4 2 4
 // 17 -> такого числа в массиве нет
 
-// int rows = 10;                                   //я не уверен что понял условие. Мы задаём 2 координаты и получаем содержимое ячейки ?
-// int cols = 10;                                   //указание что "такого элемента нет" я расценил как "такой ячейки (координаты) нет", или тогда о чём речь...
+// int rows = 10;                                   
+// int cols = 10;                                   
 // int[,] matrix = new int[rows, cols]; 
 
 // for (int i = 0; i < rows; i++)
@@ -59,17 +59,37 @@
 //     Console.WriteLine();
 //     Console.WriteLine();
 // }
-// Console.Write("what row from 1 to 10: ");
+// Console.Write("what row we look at: ");
 // int rowIndex = Convert.ToInt32(Console.ReadLine());
-// Console.Write("what column from 1 to 10: ");
+// Console.Write("what col we look at: ");
 // int colIndex = Convert.ToInt32(Console.ReadLine());
-// if (rowIndex > rows || colIndex > cols)
+// Console.Write("whait! What method of counting do you prefer? We begin from 0 or from 1? Type '0' or '1' please: ");
+// int tradition  = Convert.ToInt32(Console.ReadLine());
+// if (tradition == 1)
 // {
-//     Console.Write("The matrix is 10x10 only");
+//     if (rowIndex > rows || rowIndex < 1 || colIndex > cols || colIndex < 1)
+//     {
+//         Console.Write("The matrix is 10x10 only, from 1 to 10");
+//     }
+//     else
+//     {
+//         Console.Write(matrix[rowIndex - 1, colIndex - 1]);
+//     }
+// }
+// else if (tradition == 0)
+// {    
+//     if (rowIndex > rows-1 || rowIndex < 0 || colIndex > cols-1 || colIndex < 0)
+//     {
+//         Console.Write("The matrix is 10x10 only, from 0 to 9");
+//     }
+//     else
+//     {
+//         Console.Write(matrix[rowIndex, colIndex]);
+//     }
 // }
 // else
 // {
-//     Console.Write(matrix[rowIndex - 1, colIndex - 1]);
+//     Console.WriteLine("omg, are u kiddin' man? Retry with ONE or ZERO, m'kay?");
 // }
 //     =======      =======          =======       =======        =======            =======       =======          =====================================
 //  На всякий случай... если я понял неверно условие - вот по другому. Мы задаём одно число и ищем его по матрице, а вот если нет его - то говорим "неть"
@@ -142,3 +162,13 @@
 //         averageInCols[j] = sumCol / matrix.GetLength(0);
 //     }
 // Console.WriteLine($"Our averages are: [{String.Join<double>("; ", averageInCols)}]");
+// =========================================================================================================================
+// Задача 54: Задайте двумерный массив. Напишите программу, которая упорядочит по убыванию элементы каждой строки двумерного массива.
+// Например, задан массив:
+// 1 4 7 2
+// 5 9 2 3
+// 8 4 2 4
+// В итоге получается вот такой массив:
+// 7 4 2 1
+// 9 5 3 2
+// 8 4 4 2
