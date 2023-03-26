@@ -172,3 +172,46 @@
 // 7 4 2 1
 // 9 5 3 2
 // 8 4 4 2
+
+int rows = 3;                                  
+int cols = 9;
+int i = 0;
+int j = 0;                       
+int[,] matrix = new int[rows, cols]; 
+for (i = 0; i < rows; i++)
+{
+    for (j = 0; j < cols; j++)
+    {
+        matrix[i, j] = new Random().Next(100);
+        Console.Write(matrix[i, j] + "\t");
+    }
+    Console.WriteLine();
+    Console.WriteLine();
+}
+int[,] newMatrix = new int[rows, cols];
+Console.WriteLine($"Rows are sorted now:");
+int k = 0;
+for (k = 0; k < rows; k++)
+{
+    for (j = 0; j < cols; j++)
+    {
+        int localMax = 0;
+        i = 0;
+        newMatrix[k, j] = matrix[k, j];
+        if (matrix[i, j] < matrix[i, j+1] && j < cols)
+            {
+                localMax = matrix[i, j+1];
+                newMatrix[k, j] = localMax;
+                j++;
+            }
+            else
+            {
+                localMax = matrix[i, j];
+                newMatrix[k, j] = localMax;
+                j++;
+            }
+        Console.Write(matrix[k, j] + "\t");
+    }
+    Console.WriteLine();
+    Console.WriteLine();
+}
