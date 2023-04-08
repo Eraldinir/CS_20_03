@@ -173,7 +173,49 @@
 // 9 5 3 2
 // 8 4 4 2
 
-// int rows = 3;                                  
+// int rows = 4;                                  
+// int cols = 4;
+// int i = 0;
+// int j = 0;                       
+// int[,] matrix = new int[rows, cols]; 
+// for (i = 0; i < rows; i++)
+// {
+//     for (j = 0; j < cols; j++)
+//     {
+//         matrix[i, j] = new Random().Next(100);
+//         Console.Write(matrix[i, j] + "\t");
+//     }
+//     Console.WriteLine();
+//     Console.WriteLine();
+// }
+// Console.WriteLine($"Rows are sorted now:");
+// int k = 0;
+//     for (i = 0; i < rows; i++)
+//     {
+//         for (j = 0; j < cols; j++)
+//         {
+//             for (k = j+1; k < cols && matrix[i, k] > matrix[i, j];)
+//             {    
+//                 int temp = matrix[i, k];
+//                 matrix[i, k] = matrix[i, j];
+//                 matrix[i, j] = temp;
+//             } 
+//             Console.Write(matrix[i, j] + "\t");       
+//         }
+//         Console.WriteLine();
+//         Console.WriteLine();
+//     }
+
+// =========================================================================================================================
+// Задача 56: Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов.
+// Например, задан массив:
+// 1 4 7 2
+// 5 9 2 3
+// 8 4 2 4
+// 5 2 6 7
+// Программа считает сумму элементов в каждой строке и выдаёт номер строки с наименьшей суммой элементов: 1 строка
+
+// int rows = 10;                                  
 // int cols = 3;
 // int i = 0;
 // int j = 0;                       
@@ -188,73 +230,25 @@
 //     Console.WriteLine();
 //     Console.WriteLine();
 // }
-// Console.WriteLine($"Rows are sorted now:");    
-// int[,] newMatrix = new int[rows, cols]; 
-// int k = j+1;
-//     for (i = 0; i < rows; i++)
+// int k = 0; 
+// int sumRow = 0;
+// int minSumRow = cols * 100;                              
+// for (i = 0; i < matrix.GetLength(0); i++)                  
+// {
+//     sumRow = 0;                                          
+//     for (j = 0; j < matrix.GetLength(1); j++)
 //     {
-//         for (j = 0; j < cols; j++)
-//         {
-//             for (k = j+1; k < cols; k++)
-//             {
-//                 if (newMatrix[i, k] < newMatrix[i, j])
-//                 {
-//                     int temp = newMatrix[i, k];
-//                     newMatrix[i, k] = newMatrix[i, j];
-//                     newMatrix[i, j] = temp;
-//                 }     
-                 
-//             }  
-//         }
-//         Console.WriteLine();
-//         Console.WriteLine();
-//         Console.Write(matrix[i, k] + "\t");
+//         sumRow += matrix[i, j];        
 //     }
-
-// =========================================================================================================================
-// Задача 56: Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов.
-// Например, задан массив:
-// 1 4 7 2
-// 5 9 2 3
-// 8 4 2 4
-// 5 2 6 7
-// Программа считает сумму элементов в каждой строке и выдаёт номер строки с наименьшей суммой элементов: 1 строка
-
-int rows = 10;                                  
-int cols = 3;
-int i = 0;
-int j = 0;                       
-int[,] matrix = new int[rows, cols]; 
-for (i = 0; i < rows; i++)
-{
-    for (j = 0; j < cols; j++)
-    {
-        matrix[i, j] = new Random().Next(100);
-        Console.Write(matrix[i, j] + "\t");
-    }
-    Console.WriteLine();
-    Console.WriteLine();
-}
-int k = 0; 
-int sumRow = 0;
-int minSumRow = cols * 100;                              
-for (i = 0; i < matrix.GetLength(0); i++)                  
-{
-    sumRow = 0;                                          
-    for (j = 0; j < matrix.GetLength(1); j++)
-    {
-        sumRow += matrix[i, j];        
-    }
-    if (minSumRow > sumRow)
-        {    
-            minSumRow = sumRow;
-            k = i;
-            k++;
-        }
-}
-Console.WriteLine($"MINIMAL summ is at row: {k}");
+//     if (minSumRow > sumRow)
+//         {    
+//             minSumRow = sumRow;
+//             k = i;
+//             k++;
+//         }
+// }
+// Console.WriteLine($"MINIMAL summ is at row: {k}");
     
-
 // =========================================================================================================================
 // Задача 58: Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
 // Например, даны 2 матрицы:
@@ -263,6 +257,66 @@ Console.WriteLine($"MINIMAL summ is at row: {k}");
 // Результирующая матрица будет:
 // 18 20
 // 15 18
+
+Console.Write("set how many rows at matrix 1: ");
+int rows = Convert.ToInt32(Console.ReadLine());
+Console.Write("set how many columns at matrix 1 / rows at matrix 2: ");
+int mult = Convert.ToInt32(Console.ReadLine());
+Console.Write("set how many columns at matrix 2: ");
+int cols = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("FIRST");
+int i = 0;
+int j = 0;
+int p = 0;
+int q = 0;
+int ro = 0;
+int co = 0;
+int[,] matrixOne = new int[rows, mult]; 
+for (i = 0; i < rows; i++)
+{
+    for (j = 0; j < mult; j++)
+    {
+        matrixOne[i, j] = new Random().Next(-9, 10);
+        Console.Write(matrixOne[i, j] + "\t");
+    }
+    Console.WriteLine();
+    Console.WriteLine();
+}
+Console.WriteLine("=======================================================");
+Console.WriteLine("SECOND");
+int[,] matrixTwo = new int[mult, cols]; 
+for (p = 0; p < mult; p++)
+{
+    for (q = 0; q < cols; q++)
+    {
+        matrixTwo[p, q] = new Random().Next(-9, 10);
+        Console.Write(matrixTwo[p, q] + "\t");
+    }
+    Console.WriteLine();
+    Console.WriteLine();
+}
+Console.WriteLine("=======================================================");
+Console.WriteLine("their MULTIPLICATION");
+int[,] matrixMult = new int[rows, cols];                            
+for (ro = 0, i = 0; ro < matrixOne.GetLength(0); ro++, i++)                  
+{                                       
+    for (co = 0, q = 0; co < matrixTwo.GetLength(1); co++, q++)
+    {
+        int temp = 0;
+        int element = 0; 
+        matrixMult[ro, co] = 0;
+        for (j = 0, p = 0; j < matrixTwo.GetLength(0); j++, p++)
+        {
+            matrixMult[ro, co] = 0;
+            temp = matrixOne[i, j] * matrixTwo[p, q]; 
+            element += temp;
+        }
+        matrixMult[ro, co] = element;
+    Console.Write(matrixMult[ro, co] + "\t");
+    }
+    Console.WriteLine();
+    Console.WriteLine(); 
+}
 
 // =========================================================================================================================
 // Задача 60. ...Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.
@@ -285,6 +339,8 @@ Console.WriteLine($"MINIMAL summ is at row: {k}");
 // Задача 64: Задайте значение N. Напишите программу, которая выведет все натуральные числа в промежутке от N до 1. Выполнить с помощью рекурсии.
 // N = 5 -> "5, 4, 3, 2, 1"
 // N = 8 -> "8, 7, 6, 5, 4, 3, 2, 1"
+
+
 
 // =========================================================================================================================
 // Задача 66: Задайте значения M и N. Напишите программу, которая найдёт сумму натуральных элементов в промежутке от M до N.
