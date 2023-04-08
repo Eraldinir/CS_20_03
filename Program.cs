@@ -173,8 +173,8 @@
 // 9 5 3 2
 // 8 4 4 2
 
-// int rows = 4;                                  
-// int cols = 4;
+// int rows = 9;                                  
+// int cols = 9;
 // int i = 0;
 // int j = 0;                       
 // int[,] matrix = new int[rows, cols]; 
@@ -182,23 +182,25 @@
 // {
 //     for (j = 0; j < cols; j++)
 //     {
-//         matrix[i, j] = new Random().Next(100);
+//         matrix[i, j] = new Random().Next(1000);
 //         Console.Write(matrix[i, j] + "\t");
 //     }
 //     Console.WriteLine();
 //     Console.WriteLine();
 // }
 // Console.WriteLine($"Rows are sorted now:");
-// int k = 0;
 //     for (i = 0; i < rows; i++)
 //     {
 //         for (j = 0; j < cols; j++)
 //         {
-//             for (k = j+1; k < cols && matrix[i, k] > matrix[i, j];)
+//             for (int k = j + 1; k < cols; k++)
 //             {    
+//                 if (matrix[i, k] > matrix[i, j])
+//                 {
 //                 int temp = matrix[i, k];
 //                 matrix[i, k] = matrix[i, j];
 //                 matrix[i, j] = temp;
+//                 }
 //             } 
 //             Console.Write(matrix[i, j] + "\t");       
 //         }
@@ -258,65 +260,65 @@
 // 18 20
 // 15 18
 
-Console.Write("set how many rows at matrix 1: ");
-int rows = Convert.ToInt32(Console.ReadLine());
-Console.Write("set how many columns at matrix 1 / rows at matrix 2: ");
-int mult = Convert.ToInt32(Console.ReadLine());
-Console.Write("set how many columns at matrix 2: ");
-int cols = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("FIRST");
-int i = 0;
-int j = 0;
-int p = 0;
-int q = 0;
-int ro = 0;
-int co = 0;
-int[,] matrixOne = new int[rows, mult]; 
-for (i = 0; i < rows; i++)
-{
-    for (j = 0; j < mult; j++)
-    {
-        matrixOne[i, j] = new Random().Next(-9, 10);
-        Console.Write(matrixOne[i, j] + "\t");
-    }
-    Console.WriteLine();
-    Console.WriteLine();
-}
-Console.WriteLine("=======================================================");
-Console.WriteLine("SECOND");
-int[,] matrixTwo = new int[mult, cols]; 
-for (p = 0; p < mult; p++)
-{
-    for (q = 0; q < cols; q++)
-    {
-        matrixTwo[p, q] = new Random().Next(-9, 10);
-        Console.Write(matrixTwo[p, q] + "\t");
-    }
-    Console.WriteLine();
-    Console.WriteLine();
-}
-Console.WriteLine("=======================================================");
-Console.WriteLine("their MULTIPLICATION");
-int[,] matrixMult = new int[rows, cols];                            
-for (ro = 0, i = 0; ro < matrixOne.GetLength(0); ro++, i++)                  
-{                                       
-    for (co = 0, q = 0; co < matrixTwo.GetLength(1); co++, q++)
-    {
-        int temp = 0;
-        int element = 0; 
-        matrixMult[ro, co] = 0;
-        for (j = 0, p = 0; j < matrixTwo.GetLength(0); j++, p++)
-        {
-            matrixMult[ro, co] = 0;
-            temp = matrixOne[i, j] * matrixTwo[p, q]; 
-            element += temp;
-        }
-        matrixMult[ro, co] = element;
-    Console.Write(matrixMult[ro, co] + "\t");
-    }
-    Console.WriteLine();
-    Console.WriteLine(); 
-}
+// Console.Write("set how many rows at matrix 1: ");
+// int rows = Convert.ToInt32(Console.ReadLine());
+// Console.Write("set how many columns at matrix 1 / rows at matrix 2: ");
+// int mult = Convert.ToInt32(Console.ReadLine());
+// Console.Write("set how many columns at matrix 2: ");
+// int cols = Convert.ToInt32(Console.ReadLine());
+// Console.WriteLine("FIRST");
+// int i = 0;
+// int j = 0;
+// int p = 0;
+// int q = 0;
+// int ro = 0;
+// int co = 0;
+// int[,] matrixOne = new int[rows, mult]; 
+// for (i = 0; i < rows; i++)
+// {
+//     for (j = 0; j < mult; j++)
+//     {
+//         matrixOne[i, j] = new Random().Next(-9, 10);
+//         Console.Write(matrixOne[i, j] + "\t");
+//     }
+//     Console.WriteLine();
+//     Console.WriteLine();
+// }
+// Console.WriteLine("=======================================================");
+// Console.WriteLine("SECOND");
+// int[,] matrixTwo = new int[mult, cols]; 
+// for (p = 0; p < mult; p++)
+// {
+//     for (q = 0; q < cols; q++)
+//     {
+//         matrixTwo[p, q] = new Random().Next(-9, 10);
+//         Console.Write(matrixTwo[p, q] + "\t");
+//     }
+//     Console.WriteLine();
+//     Console.WriteLine();
+// }
+// Console.WriteLine("=======================================================");
+// Console.WriteLine("their MULTIPLICATION");
+// int[,] matrixMult = new int[rows, cols];                            
+// for (ro = 0, i = 0; ro < matrixOne.GetLength(0); ro++, i++)                  
+// {                                       
+//     for (co = 0, q = 0; co < matrixTwo.GetLength(1); co++, q++)
+//     {
+//         int temp = 0;
+//         int element = 0; 
+//         matrixMult[ro, co] = 0;
+//         for (j = 0, p = 0; j < matrixTwo.GetLength(0); j++, p++)
+//         {
+//             matrixMult[ro, co] = 0;
+//             temp = matrixOne[i, j] * matrixTwo[p, q]; 
+//             element += temp;
+//         }
+//         matrixMult[ro, co] = element;
+//     Console.Write(matrixMult[ro, co] + "\t");
+//     }
+//     Console.WriteLine();
+//     Console.WriteLine(); 
+// }
 
 // =========================================================================================================================
 // Задача 60. ...Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.
