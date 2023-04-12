@@ -328,26 +328,26 @@
 // 27(0,0,1) 90(0,1,1)
 // 26(1,0,1) 55(1,1,1)
 
-int rows = 3;
-int cols = 3;
-int layers = 3;
-int i = 0;
-int j = 0;
-int k = 0;                      
-int[,,] cube = new int[rows, cols, layers]; 
-for (k =0; k < layers; k++)
-{
-    for (i = 0; i < rows; i++)
-    {
-        for (j = 0; j < cols; j++)
-        {
-        cube[i, j, k] = new Random().Next(10, 100);
-        Console.Write($"{cube[i, j, k]}({i},{j},{k})  ");
-        }
-        Console.WriteLine();
-    }
-    Console.WriteLine();
-}
+// int rows = 3;
+// int cols = 3;
+// int layers = 3;
+// int i = 0;
+// int j = 0;
+// int k = 0;                      
+// int[,,] cube = new int[rows, cols, layers]; 
+// for (k =0; k < layers; k++)
+// {
+//     for (i = 0; i < rows; i++)
+//     {
+//         for (j = 0; j < cols; j++)
+//         {
+//         cube[i, j, k] = new Random().Next(10, 100);
+//         Console.Write($"{cube[i, j, k]}({i},{j},{k})  ");
+//         }
+//         Console.WriteLine();
+//     }
+//     Console.WriteLine();
+// }
 
 // =========================================================================================================================
 // ДОП
@@ -363,7 +363,15 @@ for (k =0; k < layers; k++)
 // N = 5 -> "5, 4, 3, 2, 1"
 // N = 8 -> "8, 7, 6, 5, 4, 3, 2, 1"
 
-
+Console.Write("enter N: ");
+int number = Convert.ToInt32(Console.ReadLine());
+void NaturalNumber(int n)
+{
+    if (n == 0) return;
+    Console.Write($"{n}  ");
+    NaturalNumber(--n);
+}
+NaturalNumber(number);
 
 // =========================================================================================================================
 // Задача 66: Задайте значения M и N. Напишите программу, которая найдёт сумму натуральных элементов в промежутке от M до N.
