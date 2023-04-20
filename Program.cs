@@ -328,26 +328,29 @@
 // 27(0,0,1) 90(0,1,1)
 // 26(1,0,1) 55(1,1,1)
 
-// int rows = 3;
-// int cols = 3;
-// int layers = 3;
-// int i = 0;
-// int j = 0;
-// int k = 0;                      
-// int[,,] cube = new int[rows, cols, layers]; 
-// for (k =0; k < layers; k++)
-// {
-//     for (i = 0; i < rows; i++)
-//     {
-//         for (j = 0; j < cols; j++)
-//         {
-//         cube[i, j, k] = new Random().Next(10, 100);
-//         Console.Write($"{cube[i, j, k]}({i},{j},{k})  ");
-//         }
-//         Console.WriteLine();
-//     }
-//     Console.WriteLine();
-// }
+int rows = 3;
+int cols = 3;
+int layers = 3;
+int i = 0;
+int j = 0;
+int k = 0;
+int[,,] cube = new int[rows, cols, layers];
+List<int> numbers = Enumerable.Range(10, 90).OrderBy(x => Guid.NewGuid()).Take(rows*cols*layers).ToList();  //ПОЧЕМУ я жду от Range(a, b) числа от a до b, а на деле имею от a до b+a ??
+int p = 0;
+for (k = 0; k < layers; k++)
+{
+    for (i = 0; i < rows; i++)
+    {
+        for (j = 0; j < cols && p < rows*cols*layers; p++, j++)
+        {
+            cube[i, j, k] = numbers[p];
+            Console.Write($"{cube[i, j, k]}({i},{j},{k})  ");      
+        }
+        Console.WriteLine();
+    }
+    Console.WriteLine();
+}
+
 
 // =========================================================================================================================
 // ДОП
@@ -363,22 +366,36 @@
 // N = 5 -> "5, 4, 3, 2, 1"
 // N = 8 -> "8, 7, 6, 5, 4, 3, 2, 1"
 
-Console.Write("enter N: ");
-int number = Convert.ToInt32(Console.ReadLine());
-void NaturalNumber(int n)
-{
-    if (n == 0) return;
-    Console.Write($"{n}  ");
-    NaturalNumber(--n);
-}
-NaturalNumber(number);
+// Console.Write("enter N: ");
+// int number = Convert.ToInt32(Console.ReadLine());
+// void NaturalNumber(int n)
+// {
+//     if (n == 0) return;                 // воообще, с этой задачкой мне немного помог один товарищ (работающий на С)
+//     Console.Write($"{n}  ");            // и не без его помощи, я заметил, что отсутствие "лишних" фигурных скобок в "if" было ещё на семинаре :))
+//     NaturalNumber(--n);                 // а из важного он на пальцах объяснил разницу между "n--" и "--n" (у меня было "n - 1")
+// }
+// NaturalNumber(number);                  // и вот тут я не совсем понял зачем (мне пришлось) вызывать метод уже после всего. Как тут работает логика?
 
 // =========================================================================================================================
 // Задача 66: Задайте значения M и N. Напишите программу, которая найдёт сумму натуральных элементов в промежутке от M до N.
 // M = 1; N = 15 -> 120
 // M = 4; N = 8. -> 30
 
+// Console.Write("Enter N: ");
+// int n = Convert.ToInt32(Console.ReadLine());
+// Console.Write("Enter M: ");
+// int m = Convert.ToInt32(Console.ReadLine());
+// int sum = SumNumbers(n, m);                                // написал с небольшой помощью интернетов, очень сыро, для вводимого N только если меньше М
+// int SumNumbers(int n, int m)                               // я так и не понял почему я снова указываю тут в скобках, что n и m это int. Они же описаны выше! Но иначе на этом месте баг.
+// {                                                          // и опять же, лишь по совету интернетов я взял SumNumbers, который сам всё считает... Это значит, оно зашито в функцию?
+//     if (n > m) return 0;                                   // ну то есть - есть некий пул готовых функций с ожидаемыми операциями, которые не надо вручную прописывать? Упустил этот момент.
+//     return n + SumNumbers(n+1, m);
+// }
+// Console.WriteLine($"The sum of the numbers between N and M is: {sum-n-m}");  //хочу чтобы N и М не включались, они же не между...
+
 // =========================================================================================================================
 // Задача 68: Напишите программу вычисления функции Аккермана с помощью рекурсии. Даны два неотрицательных числа m и n.
 // m = 2, n = 3 -> A(m,n) = 9
 // m = 3, n = 2 -> A(m,n) = 29
+
+
