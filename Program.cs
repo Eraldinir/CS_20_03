@@ -335,7 +335,7 @@ int i = 0;
 int j = 0;
 int k = 0;
 int[,,] cube = new int[rows, cols, layers];
-List<int> numbers = Enumerable.Range(10, 90).OrderBy(x => Guid.NewGuid()).Take(rows*cols*layers).ToList();  //ПОЧЕМУ я жду от Range(a, b) числа от a до b, а на деле имею от a до b+a ??
+List<int> numbers = Enumerable.Range(10, 89).OrderBy(x => Guid.NewGuid()).Take(rows*cols*layers).ToList();  //ПОЧЕМУ я жду от Range(a, b) числа от a до b, а на деле имею от a до b+a ??
 int p = 0;
 for (k = 0; k < layers; k++)
 {
