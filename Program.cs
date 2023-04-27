@@ -328,29 +328,28 @@
 // 27(0,0,1) 90(0,1,1)
 // 26(1,0,1) 55(1,1,1)
 
-int rows = 3;
-int cols = 3;
-int layers = 3;
-int i = 0;
-int j = 0;
-int k = 0;
-int[,,] cube = new int[rows, cols, layers];
-List<int> numbers = Enumerable.Range(10, 89).OrderBy(x => Guid.NewGuid()).Take(rows*cols*layers).ToList();  //ПОЧЕМУ я жду от Range(a, b) числа от a до b, а на деле имею от a до b+a ??
-int p = 0;
-for (k = 0; k < layers; k++)
-{
-    for (i = 0; i < rows; i++)
-    {
-        for (j = 0; j < cols && p < rows*cols*layers; p++, j++)
-        {
-            cube[i, j, k] = numbers[p];
-            Console.Write($"{cube[i, j, k]}({i},{j},{k})  ");      
-        }
-        Console.WriteLine();
-    }
-    Console.WriteLine();
-}
-
+// int rows = 3;
+// int cols = 3;
+// int layers = 3;
+// int i = 0;
+// int j = 0;
+// int k = 0;
+// int[,,] cube = new int[rows, cols, layers];
+// List<int> numbers = Enumerable.Range(10, 90).OrderBy(x => Guid.NewGuid()).Take(rows*cols*layers).ToList();  //ПОЧЕМУ я жду от Range(a, b) числа от a до b, а на деле имею от a до b+a ??
+// int p = 0;
+// for (k = 0; k < layers; k++)
+// {
+//     for (i = 0; i < rows; i++)
+//     {
+//         for (j = 0; j < cols && p < rows*cols*layers; p++, j++)
+//         {
+//             cube[i, j, k] = numbers[p];
+//             Console.Write($"{cube[i, j, k]}({i},{j},{k})  ");      
+//         }
+//         Console.WriteLine();
+//     }
+//     Console.WriteLine();
+// }
 
 // =========================================================================================================================
 // ДОП
@@ -359,7 +358,90 @@ for (k = 0; k < layers; k++)
 // 01 02 03 04
 // 12 13 14 05
 // 11 16 15 06
-// 10 09 08 07
+// 10 09 08 07                                                                -= Часть 1: Страдания =-
+
+// int i = 0;
+// int j = 0;
+// int[,] spiral = new int[5,5];
+// List<int> numbers = Enumerable.Range(1, 25).ToList();
+// int p = 0;
+// for (i = 2, j = 1; j < 3; j++, p++)
+// {
+//     for (i = 3, j = 2; j > 0; j--, p++)
+//     {
+//         for (i = 2, j = 3; i < 4; i++, p++)
+//         {
+//             for (i = 1, j = 1; j < 4; j++, p++)
+//             {
+//                 for (i = 3, j = 0; i > 0; i--, p++)
+//                 {
+//                     for (i = 4, j = 3; j > -1; j--, p++)
+//                     {
+//                         for (i = 1, j = 4; i < 5; i++, p++)
+//                         {
+//                             for (i = 0, j = 0; j < 5; j++, p++)
+//                             {
+//                                 spiral[i, j] = numbers[p];
+//                                 if (numbers[p]<10)
+//                                 {
+//                                 Console.Write($"0{spiral[i, j]}  ");         
+//                                 }
+//                                 else
+//                                 {
+//                                 Console.Write($"{spiral[i, j]}  "); 
+//                                 }
+//                             }Console.WriteLine();
+//                         }
+//                     }        
+//                 }            
+//             }
+//         }    
+//     }
+// }
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - -                               -= Часть 2: Смирение =-
+
+// int rows = 5;                                                                                
+// int cols = 5;
+// int i = 0;
+// int j = 0;
+// int[,] spiral = new int[rows, cols];                     // ТУТ Я СЧИТЕРИЛ И ПРОСТО ВБИЛ ПОСТРОЧНУЮ ВЫПИСКУ НУЖНОГО МАРШРУТА
+// List<int> numbers = new List<int>{1, 2, 3, 4, 5, 16, 17, 18, 19, 6, 15, 24, 25, 20, 7, 14, 23, 22, 21, 8, 13, 12, 11, 10, 9};  
+// int p = 0;
+// for (i = 0; i < rows; i++)
+// {
+//     for (j = 0; j < cols; p++, j++)
+//     {
+//         spiral[i, j] = numbers[p];
+//         if (numbers[p]<10)                               
+//         {
+//             Console.Write($"0{spiral[i, j]}  ");          // я хотел чтобы 1 2 3.. были как 01 02 03.. И не придумал ничего лучше.
+//         }
+//         else
+//         {
+//             Console.Write($"{spiral[i, j]}  "); 
+//         }     
+//     }
+//     Console.WriteLine();
+// }
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - -                                -= Часть 3: Развитие =-
+
+// int rows = 5;                             // я просто не мог не попробовать провернуть этот же манёвр с буквами!
+// int cols = 5;
+// int i = 0;
+// int j = 0;
+// string[,] spiral = new string[rows, cols];// тут опять же я просто задал массив вручную. Но если освоить маршрут по координатам, то (вроде) от заданного "А" инкремент построит сам всё по ASCII
+// List<string> letters = new List<string>{"A", "B", "C", "D", "E", "Q", "R", "S", "T", "F", "P", "Y", "Z", "U", "G", "O", "X", "W", "V", "H", "N", "M", "L", "K", "I/J"};  
+// for (i = 0; i < rows; i++)                // у меня всё отлично работало и с char + одинарные кавычки, но пришлось поменять весь тип на string ради одного только "I/J"
+// {                                         // это стандартный приём ещё из древней криптографии, чтоб 26 букв влезли в удобный квадрат. Я книгу про это пишу :)
+//     for (j = 0; j < cols; j++)
+//     {
+//         spiral[i, j] = letters[i * 5 + j];// про [i * 5 + j] мне подсказали интернеты, сперва было похоже на магию, но пото разобрался почему именно это проводит по Листу как надо
+//         Console.Write($"{spiral[i, j]}  "); 
+//     }
+//     Console.WriteLine();
+// }
 
 // =========================================================================================================================
 // Задача 64: Задайте значение N. Напишите программу, которая выведет все натуральные числа в промежутке от N до 1. Выполнить с помощью рекурсии.
@@ -398,4 +480,24 @@ for (k = 0; k < layers; k++)
 // m = 2, n = 3 -> A(m,n) = 9
 // m = 3, n = 2 -> A(m,n) = 29
 
-
+// Console.Write("let's try with this 'm': ");
+// int m = Convert.ToInt32(Console.ReadLine());
+// Console.Write("and with this 'n': ");
+// int n = Convert.ToInt32(Console.ReadLine());           // Я скопипастил часть кода из сети, но не просто так, а внимательно почитав предварительно о том, что вообще такое эта функция
+// static int AKK(int m, int n)                           // Аккермана и зачем она нужна. Я даже почти постиг её математический смысл... Но нет. В моём мире пока это "бесполезная магия"
+// {
+//     if (m == 0)
+//     {
+//         return n + 1;
+//     }
+//     else if (n == 0)
+//     {
+//         return AKK(m - 1, 1);
+//     }
+//     else
+//     {
+//         return AKK(m - 1, AKK(m, n - 1));
+//     }
+// }
+// int result = AKK(m, n);
+// Console.WriteLine($"Ackerman function is: {result}");
